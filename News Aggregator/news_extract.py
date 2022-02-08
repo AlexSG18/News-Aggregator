@@ -23,15 +23,15 @@ def get_content_links(url):
     for ul in containers:
         containers_list.extend(ul.findAll('a'))
     for link in containers_list:
-        links.append(link. get('href'))
+        links.append(link.get('href'))
     return links
 
 
 # Method Purpose: This method extracts each article into a string.
 
 def get_content_string(links):
-    print(links[0])
-    page = requests.get(links[0])
+    print(links[20])
+    page = requests.get(links[20])
     page_soup = soup(page.content, 'html.parser')
     containers = page_soup.find_all(class_="layoutItem article-body-english")
     text = page_soup.get_text()
