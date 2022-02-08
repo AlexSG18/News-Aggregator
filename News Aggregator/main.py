@@ -14,7 +14,7 @@ from newspaper import Article
 my_url = "https://www.ynetnews.com/category/3089"
 
 
-# Method Purpose: This method extracts a content dictionary from an HTML outline of the NY Times Tech Section.
+# Method Purpose: This method extracts a URL from an HTML outline of the NY Times Tech Section.
 # Parameter: The URL of the NY Times Tech Section.
 # Steps (How it Works):
 # 1. Gets a script of all the HTML on the page.
