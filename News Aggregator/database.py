@@ -10,7 +10,7 @@ import sqlite3
 import news_extract
 from sqlite3 import Error
 from itertools import product
-
+import data_EDA
 
 
 def create_connection(db_file):
@@ -48,7 +48,7 @@ def add_user(id, user, email_address, news_category_list, preference_list):
 
 
 def create_database(my_url):
-    
+    text_toEDA = ''
     data_base = create_connection(r"ynet_data.db")
     cur = data_base.cursor()
     cur.execute('''CREATE TABLE IF NOT EXISTS articles
@@ -58,6 +58,7 @@ def create_database(my_url):
     for link in links:
         text = news_extract.get_content_string(link)
         text_catagory = find_in_text(text)
+        text_toEDA = text + " " + text_toEDA
         if text_catagory is not None:
             if text_catagory == 'sports':            
                 cur.execute("INSERT INTO articles (sports) VALUES(?)",(link, ))
@@ -71,7 +72,7 @@ def create_database(my_url):
             elif text_catagory == 'weather':            
                 cur.execute("INSERT INTO articles (weather) VALUES(?)",(link, ))
                 data_base.commit()
-                
+    data_EDA.collect_data(text_toEDA)          
     data_base.close()
 
     
