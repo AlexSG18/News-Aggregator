@@ -15,6 +15,14 @@ my_url = "https://www.ynetnews.com/category/3089"
  
 
 def main():
+    database.add_user(1, "Alex", "alex@", ["sports","politics"], ["weekly",'sun', '2', 'mon', '45'])
+    
+    
+    
+    
+    
+    
+    
     #links = news_extract.get_content_links(my_url)
     #text = news_extract.get_content_string(links)
     #print(text[2])
@@ -44,12 +52,13 @@ def main():
     news_category_list = list(dict.fromkeys(news_category_list))# delete duplicates
     print("What is your subscription preferences? ASAP/Daily/Weekly\n")
     preference = input()
-    preference_dict = {}
+    preference_list = []
     while 1:
         if preference.lower() == "asap":
-            preference_dict [preference] = "asap"
+            preference_list.append(preference)
             break
         elif preference.lower() == "daily":
+            preference_list.append(preference)
             time_list = []
             print("Please enter the time to receive: \n")
             while 1:
@@ -62,11 +71,10 @@ def main():
                     # if preference not in preference_dict:
                     #     preference_dict[preference] = list()
                     # preference_dict[preference].extend(int(user_input))
-            time_list = list(dict.fromkeys(time_list))# delete duplicates
-            preference_dict[preference] = time_list
+            preference_list = list(dict.fromkeys(time_list))# delete duplicates
             break
         elif preference.lower() == "weekly":
-            
+            preference_list.append(preference)
             print("Please enter what day you want to receive: \n")
             while 1:
                 user_input = input()              
@@ -75,15 +83,19 @@ def main():
                 else :
                     user_input2 = input("Please enter what time: \n")
                     print("Add another day or enter 'end' \n")
-                    preference_dict[user_input] = user_input2
+                    preference_list.append(user_input)
+                    preference_list.append(user_input2)
+                    #preference_dict[user_input] = user_input2
             break
         else :
             print("please enter the right preference: ASAP/Daily/Weekly\n")    
             time.sleep(1)
-    print(preference_dict)
+    #print(preference_dict)
     
     
-    database.add_user(user, email_address, news_category_list, preference_dict)
+    
+    
+    #database.add_user(user, email_address, news_category_list, preference_dict)
 
 if __name__ == "__main__":
     main()
