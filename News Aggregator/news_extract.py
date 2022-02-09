@@ -30,10 +30,10 @@ def get_content_links(url):
 # Method Purpose: This method extracts each article into a string.
 
 def get_content_string(links):
-    print(links[20])
-    page = requests.get(links[20])
+    #print(links[1])
+    page = requests.get(links)
     page_soup = soup(page.content, 'html.parser')
-    containers = page_soup.find_all(class_="layoutItem article-body-english")
+    #containers = page_soup.find_all(class_="layoutItem article-body-english")
     text = page_soup.get_text()
     text = " ".join(text.split())
     return text
