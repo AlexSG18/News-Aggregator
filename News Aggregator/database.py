@@ -7,9 +7,10 @@ Created on Tue Feb  8 17:06:51 2022
 """
 import random
 import sqlite3
-import itertools
 import news_extract
 from sqlite3 import Error
+from itertools import product
+
 
 
 def create_connection(db_file):
@@ -40,8 +41,16 @@ def create_database(my_url):
         text = news_extract.get_content_string(link)
         text_catagory = find_in_text(text)
         if text_catagory is not None:
-            if text_catagory == 'politics':            
-
+            if text_catagory == 'sports':            
+                cur.execute("INSERT INTO articles (politics) VALUES(?)",(link, ))
+                data_base.commit()
+            elif text_catagory == 'politics':            
+                cur.execute("INSERT INTO articles (politics) VALUES(?)",(link, ))
+                data_base.commit()
+            elif text_catagory == 'finance':            
+                cur.execute("INSERT INTO articles (politics) VALUES(?)",(link, ))
+                data_base.commit()
+            elif text_catagory == 'weather':            
                 cur.execute("INSERT INTO articles (politics) VALUES(?)",(link, ))
                 data_base.commit()
         
@@ -59,25 +68,26 @@ def find_in_text(text):
     
     text_catagory = []
     list_text = text.lower().split(" ")    
-    for catagory, word in itertools.product(sports, list_text):
+    for catagory, word in product(sports, list_text):
         if catagory == word:
             text_catagory.append('sports')
             break
-    for catagory, word in itertools.product(politics, list_text):
+    for catagory, word in product(politics, list_text):
         if catagory == word:
             text_catagory.append('politics')
             break
-    for catagory, word in itertools.product(finance, list_text):
+    for catagory, word in product(finance, list_text):
         if catagory == word:
             text_catagory.append('finance')
             break   
-    for catagory, word in itertools.product(weather, list_text):            
+    for catagory, word in product(weather, list_text):            
         if catagory == word:
             text_catagory.append('weather')
             break
+    #print(text_catagory)
     if text_catagory:
         random_catagory = random.choice(text_catagory) # if more than 2 categories
-        print(type(random_catagory))
+        #print("1" + random_catagory)
         return random_catagory
     
     return None
