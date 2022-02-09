@@ -42,19 +42,18 @@ def create_database(my_url):
         text_catagory = find_in_text(text)
         if text_catagory is not None:
             if text_catagory == 'sports':            
-                cur.execute("INSERT INTO articles (politics) VALUES(?)",(link, ))
+                cur.execute("INSERT INTO articles (sports) VALUES(?)",(link, ))
                 data_base.commit()
             elif text_catagory == 'politics':            
                 cur.execute("INSERT INTO articles (politics) VALUES(?)",(link, ))
                 data_base.commit()
             elif text_catagory == 'finance':            
-                cur.execute("INSERT INTO articles (politics) VALUES(?)",(link, ))
+                cur.execute("INSERT INTO articles (finance) VALUES(?)",(link, ))
                 data_base.commit()
             elif text_catagory == 'weather':            
-                cur.execute("INSERT INTO articles (politics) VALUES(?)",(link, ))
+                cur.execute("INSERT INTO articles (weather) VALUES(?)",(link, ))
                 data_base.commit()
-        
-        
+                
     
 
     
