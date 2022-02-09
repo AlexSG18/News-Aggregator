@@ -29,6 +29,13 @@ def create_connection(db_file):
     return conn
 
 
+def add_user(user, email_address, news_category_list, preference_dict):
+    data_base = create_connection(r"ynet_data.db")
+    cur = data_base.cursor()
+    cur.execute('''CREATE TABLE IF NOT EXISTS users
+               (user_name text, email text, categories text, preferences text)''')
+
+
 def create_database(my_url):
     
     data_base = create_connection(r"ynet_data.db")
@@ -54,7 +61,7 @@ def create_database(my_url):
                 cur.execute("INSERT INTO articles (weather) VALUES(?)",(link, ))
                 data_base.commit()
                 
-    
+
 
     
 # Method Purpose: This method finds the chosen categories from each article
