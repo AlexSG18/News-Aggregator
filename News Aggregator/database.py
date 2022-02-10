@@ -102,10 +102,8 @@ def find_in_text(text):
         if catagory == word:
             text_catagory.append('weather')
             break
-    #print(text_catagory)
     if text_catagory:
         random_catagory = random.choice(text_catagory) # if more than 2 categories
-        #print("1" + random_catagory)
         return random_catagory
     
     return None

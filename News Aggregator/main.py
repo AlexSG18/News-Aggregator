@@ -177,41 +177,6 @@ def send_email_at(send_time,sports, politics, finance, weather, email):
    print('email sent')
    
    
-   
-    # article = "articles"
-    # ynet_sql = sql.ReadSQL(r"ynet_data.db")
-    # df = ynet_sql.query_columns_to_dataframe(article,['politics'])
-    # preferences_list = df["politics"].tolist()
-    # print(preferences_list)
-    
-    
-    
-    #send by refernce
-    
-    
-    
-    
-    # import yagmail
-    # yag = yagmail.SMTP('alexcar18.bgu@gmail.com', 'car312795')
-    
-    # yag.send('alexcar18.bgu@gmail.com', "SUBJECT", "TEXT")
-    
-  
-    
-    
-    
-    #links = news_extract.get_content_links(my_url)
-    #text = news_extract.get_content_string(links)
-    #print(text[2])
-    #print(type(text))
-
-    
-   
-    
-    
-    
-    
-    #database.add_user(user, email_address, news_category_list, preference_dict)
 
 if __name__ == "__main__":
     main()

@@ -15,6 +15,5 @@ class send_links():
         ynet_sql = sql.ReadSQL(r"ynet_data.db")
         df = ynet_sql.query_columns_to_dataframe(article,[categories_list])
         preferences_list = df[categories_list].tolist()
-        
-        
+     
         return preferences_list
