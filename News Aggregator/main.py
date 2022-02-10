@@ -44,6 +44,7 @@ def main():
     email_address = input("What is your email address? \n")
     news_category_list = []
     print("For what category you would like to subscribe? \n")
+    user_id = 1
     while 1:       
         news_category = input()
         if news_category.lower() == "sports":
@@ -97,8 +98,8 @@ def main():
         else :
             print("please enter the right preference: ASAP/Daily/Weekly\n")    
             time.sleep(1)
-    database.add_user(user, email_address, news_category_list, preference_list)
-
+    database.add_user(user_id ,user, email_address, news_category_list, preference_list)
+    ++user_id
     database.create_database(my_url)    
     data_base = create_connection(r"ynet_data.db")
     cur = data_base.cursor()
@@ -143,7 +144,7 @@ def main():
                 weather = list(filter(None, weather))
                 
         if preferences_list[0] == "asap":
-            send_email(sports, politics, finance, weather)            
+            send_email(sports, politics, finance, weather, email)            
         elif preferences_list[0] == "daily":
             preferences_list.remove("daily")
             for hours in preferences_list:
